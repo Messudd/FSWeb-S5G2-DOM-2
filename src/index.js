@@ -72,3 +72,51 @@ imgList.forEach((img) => {
     event.target.style.cssText = 'transform : scale(1)';
   });
 });
+
+linkler.forEach((link) => {
+  link.addEventListener('focus', (event) => {
+    event.target.style.cssText =
+      'border: 1px solid transparent; border-radius: 4px ;padding :0.2rem; background-color: #ffff; color: #000';
+  });
+  link.addEventListener('blur', (event) => {
+    event.target.style.cssText = 'color: #000';
+  });
+});
+
+window.addEventListener('resize', () => {
+  console.log('yeniden - boyut ( x - y ) ...');
+  console.log(window.innerWidth, 'X', window.innerHeight);
+});
+
+window.addEventListener('scroll', () => {
+  console.log('scroll yapiliyor ...');
+  console.log(window.scrollX, 'X', window.scrollY);
+});
+
+const allParag = document.querySelectorAll('p');
+
+allParag.forEach((parag) => {
+  parag.addEventListener('dblclick', (event) => {
+    console.log('secilen paragraf : ', event.target);
+  });
+});
+
+const introSec = document.querySelector('.intro');
+const textNew = document.createElement('textarea');
+textNew.style.width = '100%';
+textNew.style.height = '100px';
+textNew.style.border = '2px solid darkred';
+textNew.style.borderRadius = '4px';
+
+introSec.appendChild(textNew);
+
+textNew.addEventListener('select', (event) => {
+  const selectedText = event.target.value.substring(
+    event.target.selectionStart,
+    event.target.selectionEnd
+  );
+  event.target.value = event.target.value.replace(
+    selectedText,
+    `"${selectedText}"`
+  );
+});
